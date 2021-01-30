@@ -34,11 +34,6 @@
         android:key="screen_appearance"
         android:icon="@drawable/ic_settings_appearance" />
     <PreferenceScreen
-        android:fragment="com.android.inputmethod.latin.settings.GestureSettingsFragment"
-        android:title="@string/settings_screen_gesture"
-        android:key="screen_gesture"
-        android:icon="@drawable/ic_settings_gesture" />
-    <PreferenceScreen
         android:fragment="com.android.inputmethod.latin.settings.CorrectionSettingsFragment"
         android:title="@string/settings_screen_correction"
         android:key="screen_correction"
