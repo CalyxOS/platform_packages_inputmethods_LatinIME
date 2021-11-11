@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9a58ca_5813c6a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-11T12:20:35Z",
+      "side": 1,
+      "message": "Merged upstream, 318293: LatinIME: Remove hardcoded emoji row logic | https://review.lineageos.org/c/LineageOS/android_packages_inputmethods_LatinIME/+/318293",
+      "revId": "b9deaba3200bb9af849ef2c49b7db0c453204758",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
