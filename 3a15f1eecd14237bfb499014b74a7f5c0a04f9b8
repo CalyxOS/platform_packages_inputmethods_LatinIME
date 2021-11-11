@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fe39f4_85c939c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-11T12:20:27Z",
+      "side": 1,
+      "message": "Merged upstream, 317533: LatinIME: Fix NPE in getKeyboardThemeName | https://review.lineageos.org/c/LineageOS/android_packages_inputmethods_LatinIME/+/317533",
+      "revId": "3a15f1eecd14237bfb499014b74a7f5c0a04f9b8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
