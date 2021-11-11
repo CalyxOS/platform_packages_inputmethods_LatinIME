@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea166055_2ea63245",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-11T12:25:03Z",
+      "side": 1,
+      "message": "Picked from android11-qpr1",
+      "revId": "5b6e6d65ba32151f021be39a49c26a25b1cb0124",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
