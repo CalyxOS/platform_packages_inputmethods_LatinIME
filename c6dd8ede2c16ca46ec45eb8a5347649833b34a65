@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f4bf17_a095a4e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-11T11:48:07Z",
+      "side": 1,
+      "message": "Useless for us but no point in diverging.",
+      "revId": "c6dd8ede2c16ca46ec45eb8a5347649833b34a65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
