@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16c53ce_889c4e6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2025-03-04T21:39:02Z",
+      "side": 1,
+      "message": "```suggestion\nRichInputConnection: Force batch edit restart when querying text near cursor\n\nIssue: calyxos#2916\nChange-Id: I7daad9ab62f87d4dcff02f0993b33a85a815896f\n```\n\nLet\u0027s get the issue number in here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 75,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "a66b3ac2ae213d7c3be20989d7cdc9905bdb1175",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2aac10af_846caaa4",
@@ -14,6 +37,23 @@
       "writtenOn": "2025-03-04T14:13:56Z",
       "side": 1,
       "message": "I feel there might be a better way to do this or a better place to force restarting the batch edit, but this seems to work for now.\n\nAlso might need some special handling for nesting but I cannot produce any issues related to nesting, so might be an unrelated concern.",
+      "revId": "a66b3ac2ae213d7c3be20989d7cdc9905bdb1175",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b77e513b_90636583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2025-03-04T21:39:02Z",
+      "side": 1,
+      "message": "Working for me with Proton Mail and with DeepL\u0027s floating \"Translate anywhere\" button.",
       "revId": "a66b3ac2ae213d7c3be20989d7cdc9905bdb1175",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
