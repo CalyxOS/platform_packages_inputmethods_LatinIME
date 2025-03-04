@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e21c19_f1c62d6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-03-04T21:58:04Z",
+      "side": 1,
+      "message": "Upstream in this case can be LineageOS, not sure if AOSP maintains the app anymore.",
+      "revId": "0334c486aa3ebaa39307a2ca2b50f1239f0f56f0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
