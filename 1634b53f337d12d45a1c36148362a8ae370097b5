@@ -16,6 +16,23 @@
       "message": "Source: https://github.com/futo-org/android-keyboard/commit/fdffadf6fba593fa128cb4ba7c5b795d4e370cf9",
       "revId": "1634b53f337d12d45a1c36148362a8ae370097b5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19bf585a_90e107a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000065
+      },
+      "writtenOn": "2025-03-04T06:54:07Z",
+      "side": 1,
+      "message": "License is not compatible",
+      "revId": "1634b53f337d12d45a1c36148362a8ae370097b5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
