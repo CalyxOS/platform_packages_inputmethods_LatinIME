@@ -68,6 +68,7 @@ public class SettingsValues {
     public final boolean mKeyPreviewPopupOn;
     public final boolean mShowsVoiceInputKey;
     public final boolean mShowNumberRow;
+    public final boolean mShowNumberRowPassword;
     public final boolean mShowLongpressHints;
     public final boolean mIncludesOtherImesInLanguageSwitchList;
     public final boolean mShowsLanguageSwitchKey;
@@ -77,6 +78,7 @@ public class SettingsValues {
     public final boolean mUseDoubleSpacePeriod;
     public final boolean mBlockPotentiallyOffensive;
     public final boolean mSpaceTrackpadEnabled;
+    public final boolean mBackspaceTrackpadEnabled;
     // Use bigrams to predict the next word when there is no input for it yet
     public final boolean mBigramPredictionEnabled;
     public final boolean mGestureInputEnabled;
@@ -144,6 +146,7 @@ public class SettingsValues {
                 && mInputAttributes.mShouldShowVoiceInputKey
                 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
         mShowNumberRow = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW, false);
+        mShowNumberRowPassword = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW_PASSWORD, false);
         mShowLongpressHints = prefs.getBoolean(Settings.PREF_SHOW_LONGPRESS_HINTS, true);
         mIncludesOtherImesInLanguageSwitchList = Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS
                 ? prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false)
@@ -228,6 +231,7 @@ public class SettingsValues {
                     .execute(mInputAttributes.mTargetApplicationPackageName);
         }
         mSpaceTrackpadEnabled = Settings.readSpaceTrackpadEnabled(prefs);
+        mBackspaceTrackpadEnabled = Settings.readBackspaceTrackpadEnabled(prefs);
     }
 
     public boolean isMetricsLoggingEnabled() {
