@@ -40,6 +40,7 @@ import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
@@ -60,6 +61,8 @@ import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InlineSuggestionsRequest;
+import android.view.inputmethod.InlineSuggestionsResponse;
 import android.view.inputmethod.InputMethodSubtype;
 
 import androidx.annotation.NonNull;
@@ -83,6 +86,8 @@ import com.android.inputmethod.keyboard.KeyboardSwitcher;
 import com.android.inputmethod.keyboard.MainKeyboardView;
 import com.android.inputmethod.latin.Suggest.OnGetSuggestedWordsCallback;
 import com.android.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
+import com.android.inputmethod.latin.clipboard.ClipboardSuggestion;
+import com.android.inputmethod.latin.clipboard.ClipboardSuggestionMonitor;
 import com.android.inputmethod.latin.common.Constants;
 import com.android.inputmethod.latin.common.CoordinateUtils;
 import com.android.inputmethod.latin.common.InputPointers;
@@ -126,6 +131,7 @@ import javax.annotation.Nullable;
  */
 public class LatinIME extends InputMethodService implements KeyboardActionListener,
         SuggestionStripView.Listener, SuggestionStripViewAccessor,
+        ClipboardSuggestionMonitor.Listener,
         DictionaryFacilitator.DictionaryInitializationListener,
         PermissionsManager.PermissionsResultCallback {
     static final String TAG = LatinIME.class.getSimpleName();
@@ -173,6 +179,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private InsetsUpdater mInsetsUpdater;
     private final Rect mFloatingPanelRect = new Rect();
     private SuggestionStripView mSuggestionStripView;
+    private ClipboardSuggestionMonitor mClipboardSuggestionMonitor;
 
     private RichInputMethodManager mRichImm;
     @UsedForTesting final KeyboardSwitcher mKeyboardSwitcher;
@@ -623,6 +630,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         super.onCreate();
 
         mHandler.onCreate();
+        mClipboardSuggestionMonitor = new ClipboardSuggestionMonitor(this, this);
 
         // TODO: Resolve mutual dependencies of {@link #loadSettings()} and
         // {@link #resetDictionaryFacilitatorIfNecessary()}.
@@ -916,6 +924,26 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     @Override
+    @Nullable
+    public InlineSuggestionsRequest onCreateInlineSuggestionsRequest(
+            @Nonnull final Bundle uiExtras) {
+        if (!hasSuggestionStripView()) {
+            return null;
+        }
+        return mSuggestionStripView.createInlineSuggestionsRequest(uiExtras);
+    }
+
+    @Override
+    public boolean onInlineSuggestionsResponse(
+            @Nonnull final InlineSuggestionsResponse response) {
+        if (!hasSuggestionStripView()) {
+            return false;
+        }
+        mSuggestionStripView.setInlineSuggestions(response.getInlineSuggestions());
+        return true;
+    }
+
+    @Override
     public void onFinishInput() {
         mHandler.onFinishInput();
     }
@@ -1117,6 +1145,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 currentSettingsValues.mGestureTrailEnabled,
                 currentSettingsValues.mGestureFloatingPreviewTextEnabled);
 
+        if (currentSettingsValues.mShowClipboardSuggestions) {
+            mClipboardSuggestionMonitor.start();
+        } else {
+            mClipboardSuggestionMonitor.stop();
+            onClipboardSuggestionChanged(null);
+        }
+
         if (TRACE) Debug.startMethodTracing("/data/trace/latinime");
     }
 
@@ -1147,6 +1182,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     void onFinishInputViewInternal(final boolean finishingInput) {
         super.onFinishInputView(finishingInput);
+        mClipboardSuggestionMonitor.stop();
         cleanupInternalStateForFinishInput();
     }
 
@@ -1439,6 +1475,20 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (mKeyboardSwitcher.getMainKeyboardView() != null) {
             mKeyboardSwitcher.loadKeyboard(getCurrentInputEditorInfo(), mSettings.getCurrent(),
                     getCurrentAutoCapsState(), getCurrentRecapitalizeState());
+        }
+    }
+
+    @Override
+    public void pickClipboardSuggestion(final ClipboardSuggestion suggestion,
+            final ClipboardSuggestion.Match match) {
+        onTextInput(match.getText());
+        mClipboardSuggestionMonitor.consume(suggestion);
+    }
+
+    @Override
+    public void onClipboardSuggestionChanged(@Nullable final ClipboardSuggestion suggestion) {
+        if (hasSuggestionStripView()) {
+            mSuggestionStripView.setClipboardSuggestion(suggestion);
         }
     }
 

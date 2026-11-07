@@ -70,6 +70,7 @@ public class SettingsValues {
     public final boolean mShowNumberRow;
     public final boolean mShowNumberRowPassword;
     public final boolean mShowLongpressHints;
+    public final boolean mShowClipboardSuggestions;
     public final boolean mIncludesOtherImesInLanguageSwitchList;
     public final boolean mShowsLanguageSwitchKey;
     public final boolean mShowsEmojiKey;
@@ -79,6 +80,7 @@ public class SettingsValues {
     public final boolean mBlockPotentiallyOffensive;
     public final boolean mSpaceTrackpadEnabled;
     public final boolean mBackspaceTrackpadEnabled;
+    public final boolean mSwipeDownForDigitsEnabled;
     // Use bigrams to predict the next word when there is no input for it yet
     public final boolean mBigramPredictionEnabled;
     public final boolean mGestureInputEnabled;
@@ -150,6 +152,8 @@ public class SettingsValues {
         mShowNumberRow = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW, false);
         mShowNumberRowPassword = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW_PASSWORD, false);
         mShowLongpressHints = prefs.getBoolean(Settings.PREF_SHOW_LONGPRESS_HINTS, true);
+        mShowClipboardSuggestions =
+                prefs.getBoolean(Settings.PREF_SHOW_CLIPBOARD_SUGGESTIONS, true);
         mIncludesOtherImesInLanguageSwitchList = Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS
                 ? prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false)
                 : true /* forcibly */;
@@ -237,6 +241,7 @@ public class SettingsValues {
         }
         mSpaceTrackpadEnabled = Settings.readSpaceTrackpadEnabled(prefs);
         mBackspaceTrackpadEnabled = Settings.readBackspaceTrackpadEnabled(prefs);
+        mSwipeDownForDigitsEnabled = Settings.readSwipeDownForDigitsEnabled(prefs);
     }
 
     public boolean isMetricsLoggingEnabled() {

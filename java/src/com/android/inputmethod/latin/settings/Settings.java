@@ -110,6 +110,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_SHOW_NUMBER_ROW_PASSWORD = "pref_show_number_row_password";
 
     public static final String PREF_SHOW_LONGPRESS_HINTS = "pref_show_longpress_hints";
+    public static final String PREF_SHOW_CLIPBOARD_SUGGESTIONS = "pref_show_clipboard_suggestions";
     // This preference key is deprecated. Use {@link #PREF_SHOW_LANGUAGE_SWITCH_KEY} instead.
     // This is being used only for the backward compatibility.
     private static final String PREF_SUPPRESS_LANGUAGE_SWITCH_KEY =
@@ -130,6 +131,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     // Backspace key trackpad slider
     public static final String PREF_BACKSPACE_TRACKPAD = "pref_backspace_trackpad";
+
+    public static final String PREF_SWIPE_DOWN_FOR_DIGITS = "pref_swipe_down_for_digits";
 
     // Emoji
     public static final String PREF_EMOJI_RECENT_KEYS = "emoji_recent_keys";
@@ -381,6 +384,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static boolean readBackspaceTrackpadEnabled(final SharedPreferences prefs) {
         return prefs.getBoolean(PREF_BACKSPACE_TRACKPAD, true);
+    }
+
+    public static boolean readSwipeDownForDigitsEnabled(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_SWIPE_DOWN_FOR_DIGITS, false);
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {
